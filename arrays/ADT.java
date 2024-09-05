@@ -302,16 +302,18 @@ public class ADT {
         array[0] = last;
     }
 
-    // reverse
-    // rotate
-    // check sorted
-    // mergeArray
-    // union, intersection, difference
-    // unique elements
-    // make menu driven program
+    public void merge(ADT newArray) {
+        if ((size - length) < newArray.length()) {
+            System.out.println("Array size exceeded");
+        }
+
+        for (int i = 0; i < newArray.length(); i++) {
+            this.append(newArray.get(i));
+        }
+    }
 
     public static void main(String[] args) {
-        ADT arr = new ADT(50);
+        ADT arr = new ADT(15);
 
         arr.append(7013);
         arr.append(13);
@@ -395,6 +397,12 @@ public class ADT {
         arr.rotateRight();
         System.err.println(arr);
         arr.rotateRight();
+        System.err.println(arr);
+        
+        ADT newADT = new ADT();
+        newADT.append(44944);
+        newADT.append(48854);
+        arr.merge(newADT);
         System.err.println(arr);
     }
 }
