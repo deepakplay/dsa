@@ -216,6 +216,57 @@ public class ADT {
         }
     }
 
+    public int avg() {
+        if (length <= 0) {
+            return 0;
+        }
+
+        int sum = 0;
+        
+        for (int i = 0; i < length; i++)
+            sum += array[i];
+
+        return sum / length;
+    }
+
+    public int max() {
+        if (length <= 0) {
+            return 0;
+        }
+
+        int max = array[0];
+
+        for (int i = 1; i < length; i++) {
+            if (array[i] > max)
+                max = array[i];
+        }
+
+        return max;
+    }
+
+    public int min() {
+        if (length <= 0) {
+            return 0;
+        }
+
+        int min = array[0];
+
+        for (int i = 1; i < length; i++) {
+            if (array[i] < min)
+                min = array[i];
+        }
+
+        return min;
+    }
+
+    // reverse
+    // rotate
+    // check sorted
+    // mergeArray
+    // union, intersection, difference
+    // unique elements
+    // make menu driven program
+
     public static void main(String[] args) {
         ADT arr = new ADT(50);
 
@@ -290,12 +341,3 @@ public class ADT {
         }
     }
 }
-
-// avg, max, min
-// reverse
-// rotate
-// check sorted
-// mergeArray
-// union, intersection, difference
-// unique elements
-// make menu driven program
