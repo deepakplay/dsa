@@ -222,7 +222,7 @@ public class ADT {
         }
 
         int sum = 0;
-        
+
         for (int i = 0; i < length; i++)
             sum += array[i];
 
@@ -259,20 +259,47 @@ public class ADT {
         return min;
     }
 
-    public void reverse(){
-        if(length<2){
+    public void reverse() {
+        if (length < 2) {
             return;
         }
 
-        int start =0;
-        int end = length -1;
-        while(start< end){
+        int start = 0;
+        int end = length - 1;
+        while (start < end) {
             int temp = array[start];
             array[start] = array[end];
             array[end] = temp;
             start++;
             end--;
         }
+    }
+
+    public void rotate() {
+        if (length < 1) {
+            return;
+        }
+
+        int first = array[0];
+
+        for (int i = 0; i < length - 1; i++) {
+            array[i] = array[i + 1];
+        }
+
+        array[length - 1] = first;
+    }
+
+    public void rotateRight() {
+        if (length < 1) {
+            return;
+        }
+
+        int last = array[length - 1];
+
+        for (int i = length - 1; i > 0; i--) {
+            array[i] = array[i - 1];
+        }
+        array[0] = last;
     }
 
     // reverse
@@ -357,6 +384,17 @@ public class ADT {
         }
 
         arr.reverse();
+        System.err.println(arr);
+        System.err.printf("%nLeft Rotate: %n");
+        arr.rotate();
+        System.err.println(arr);
+
+        System.err.printf("%nRight Rotate: %n");
+        arr.rotateRight();
+        System.err.println(arr);
+        arr.rotateRight();
+        System.err.println(arr);
+        arr.rotateRight();
         System.err.println(arr);
     }
 }
