@@ -55,13 +55,15 @@ public class ADT {
         array[idx] = num;
     }
 
-    public void append(int num) {
+    public ADT append(int num) {
         // O(1)
         if (length == size) {
             System.out.println("Array size exceeded");
-            return;
+            return this;
         }
         array[length++] = num;
+
+        return this;
     }
 
     public void prepend(int num) {
@@ -398,11 +400,8 @@ public class ADT {
         System.err.println(arr);
         arr.rotateRight();
         System.err.println(arr);
-        
-        ADT newADT = new ADT();
-        newADT.append(44944);
-        newADT.append(48854);
-        arr.merge(newADT);
+
+        arr.merge(new ADT().append(333).append(5255));
         System.err.println(arr);
     }
 }
