@@ -259,6 +259,22 @@ public class ADT {
         return min;
     }
 
+    public void reverse(){
+        if(length<2){
+            return;
+        }
+
+        int start =0;
+        int end = length -1;
+        while(start< end){
+            int temp = array[start];
+            array[start] = array[end];
+            array[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
     // reverse
     // rotate
     // check sorted
@@ -339,5 +355,8 @@ public class ADT {
         if (arr.checkSorted()) {
             System.out.println("Array is sorted");
         }
+
+        arr.reverse();
+        System.err.println(arr);
     }
 }
