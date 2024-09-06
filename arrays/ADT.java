@@ -47,12 +47,13 @@ public class ADT {
         return array[idx];
     }
 
-    public void set(int idx, int num) {
+    public ADT set(int idx, int num) {
         // O(1)
         if (idx < 0 || idx >= length) {
             System.out.println("Array index out of bound");
         }
         array[idx] = num;
+        return this;
     }
 
     public ADT append(int num) {
@@ -66,26 +67,28 @@ public class ADT {
         return this;
     }
 
-    public void prepend(int num) {
+    public ADT prepend(int num) {
         // O(n)
         insert(num, 0);
+
+        return this;
     }
 
-    public void insert(int num, int idx) {
+    public ADT insert(int num, int idx) {
         // O(n)
         if (length == size) {
             System.out.println("Array size exceeded");
-            return;
+            return this;
         }
 
         if (idx < 0 || idx > length) {
             System.out.println("Index out of bound");
-            return;
+            return this;
         }
 
         if (idx == length) {
             this.append(num);
-            return;
+            return this;
         }
 
         for (int i = length; i > idx; i--) {
@@ -94,42 +97,47 @@ public class ADT {
 
         array[idx] = num;
         length++;
+        return this;
     }
 
-    public void delete(int idx) {
+    public ADT delete(int idx) {
         // O(n)
         if (idx < 0 || idx >= length) {
             System.out.println("Index out of bound");
-            return;
+            return this;
         }
         for (int i = idx; i < length - 1; i++) {
             array[i] = array[i + 1];
         }
 
         length--;
+
+        return this;
     }
 
-    public void deleteElement(int num) {
+    public ADT deleteElement(int num) {
         // O(n)
         for (int i = 0; i < length; i++) {
             if (array[i] == num) {
                 delete(i); // O(n)
-                return;
+                return this;
             }
         }
+        return this;
     }
 
-    public void deleteElementLast(int num) {
+    public ADT deleteElementLast(int num) {
         // O(n)
         for (int i = length - 1; i >= 0; i--) {
             if (array[i] == num) {
                 delete(i);
-                return;
+                return this;
             }
         }
+        return this;
     }
 
-    public void deleteElementAll(int num) {
+    public ADT deleteElementAll(int num) {
         // O(n)
         int newIndex = 0;
         for (int i = 0; i < length; i++) {
@@ -143,6 +151,7 @@ public class ADT {
         }
 
         length = newIndex;
+        return this;
     }
 
     public int count(int num) {
@@ -178,6 +187,7 @@ public class ADT {
     }
 
     public int binarySearch(int num) {
+        // O(log n)
         int start = 0;
         int end = length - 1;
         int mid;
@@ -220,7 +230,8 @@ public class ADT {
         return true;
     }
 
-    public void bubbleSort() {
+    public ADT bubbleSort() {
+        // O(n*n)
         for (int i = 0; i < length; i++) {
             boolean isSwapped = false;
 
@@ -236,9 +247,11 @@ public class ADT {
             if (!isSwapped)
                 break;
         }
+        return this;
     }
 
     public int avg() {
+        // O(n)
         if (length <= 0) {
             return 0;
         }
@@ -252,6 +265,7 @@ public class ADT {
     }
 
     public int max() {
+        // O(n)
         if (length <= 0) {
             return 0;
         }
@@ -267,6 +281,7 @@ public class ADT {
     }
 
     public int min() {
+        // O(n)
         if (length <= 0) {
             return 0;
         }
@@ -281,13 +296,15 @@ public class ADT {
         return min;
     }
 
-    public void reverse() {
+    public ADT reverse() {
+        // O(n)
         if (length < 2) {
-            return;
+            return this;
         }
 
         int start = 0;
         int end = length - 1;
+
         while (start < end) {
             int temp = array[start];
             array[start] = array[end];
@@ -295,11 +312,14 @@ public class ADT {
             start++;
             end--;
         }
+
+        return this;
     }
 
-    public void rotate() {
+    public ADT rotate() {
+        // O(n)
         if (length < 1) {
-            return;
+            return this;
         }
 
         int first = array[0];
@@ -309,11 +329,13 @@ public class ADT {
         }
 
         array[length - 1] = first;
+        return this;
     }
 
-    public void rotateRight() {
+    public ADT rotateRight() {
+        // O(n)
         if (length < 1) {
-            return;
+            return this;
         }
 
         int last = array[length - 1];
@@ -322,42 +344,55 @@ public class ADT {
             array[i] = array[i - 1];
         }
         array[0] = last;
+        return this;
     }
 
-    public void merge(ADT newArray) {
+    public ADT merge(ADT newArray) {
+        // O(n)
         if ((size - length) < newArray.length()) {
             System.out.println("Array size exceeded");
+            return this;
         }
 
         for (int i = 0; i < newArray.length(); i++) {
             this.append(newArray.get(i));
         }
+
+        return this;
+    }
+
+    public ADT merge(int[] newArray) {
+        // O(n)
+        if ((size - length) < newArray.length) {
+            System.out.println("Array size exceeded");
+            return this;
+        }
+
+        for (int i = 0; i < newArray.length; i++) {
+            this.append(newArray[i]);
+        }
+
+        return this;
     }
 
     public static void main(String[] args) {
-        ADT arr = new ADT(25);
+        ADT arr = new ADT(100);
 
-        arr.append(7013);
-        arr.append(13);
-        arr.append(52);
-        arr.append(20);
-        arr.append(21);
-        arr.append(25);
-        arr.append(27);
-        arr.append(28);
-        arr.append(52);
-        arr.prepend(111);
-        arr.prepend(144);
-        arr.prepend(13);
-        arr.prepend(18);
-        arr.insert(55, 2);
-        arr.insert(55, 3);
-        arr.insert(55, arr.length() - 2);
-        arr.insert(55, arr.length() - 2);
+        arr.append(7013)
+                .append(52)
+                .prepend(111)
+                .prepend(144)
+                .prepend(13)
+                .prepend(18)
+                .insert(55, 2)
+                .insert(55, 3)
+                .insert(55, arr.length() - 2)
+                .insert(55, arr.length() - 2)
+                .insert(2001, arr.length() / 2)
+                .insert(1001, 0)
+                .insert(3001, arr.length())
+                .merge(new int[] { 13, 52, 20, 21, 25, 27, 28 });
 
-        arr.insert(2001, arr.length() / 2);
-        arr.insert(1001, 0);
-        arr.insert(3001, arr.length());
         System.out.println(arr);
 
         System.out.printf("%nDelete 0 index : %n");
@@ -421,7 +456,7 @@ public class ADT {
         System.err.println(arr);
 
         System.err.printf("%nMerge Array: %n");
-        arr.merge(new ADT().append(333).append(5255).append(255).append(525));
+        arr.merge(new ADT().merge(new int[] { 333, 5255, 255, 525 }));
         System.err.println(arr);
 
         System.err.printf("%nBinary Search: %n");
