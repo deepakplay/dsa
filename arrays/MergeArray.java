@@ -21,7 +21,7 @@ public class MergeArray {
                 newArray[idx++] = a1[i++];
             } else {
                 newArray[idx++] = a2[j++];
-            }            
+            }
         }
 
         while (i < a1.length) {

@@ -177,6 +177,26 @@ public class ADT {
         return -1;
     }
 
+    public int binarySearch(int num) {
+        int start = 0;
+        int end = length - 1;
+        int mid;
+
+        while (start <= end) {
+            mid = start + (end - start) / 2;
+
+            if (array[mid] == num) {
+                return mid;
+            } else if (array[mid] < num) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+        }
+
+        return -1;
+    }
+
     public boolean checkSorted() {
         // O(n)
         if (length < 2)
@@ -315,7 +335,7 @@ public class ADT {
     }
 
     public static void main(String[] args) {
-        ADT arr = new ADT(15);
+        ADT arr = new ADT(25);
 
         arr.append(7013);
         arr.append(13);
@@ -377,7 +397,6 @@ public class ADT {
 
         if (!arr.checkSorted()) {
             System.out.println("Array not sorted");
-
         }
 
         arr.bubbleSort();
@@ -401,7 +420,17 @@ public class ADT {
         arr.rotateRight();
         System.err.println(arr);
 
-        arr.merge(new ADT().append(333).append(5255));
+        System.err.printf("%nMerge Array: %n");
+        arr.merge(new ADT().append(333).append(5255).append(255).append(525));
         System.err.println(arr);
+
+        System.err.printf("%nBinary Search: %n");
+        if (!arr.checkSorted()) {
+            arr.bubbleSort();
+            System.err.println(arr);
+
+            System.out.println(arr.binarySearch(13));
+        }
+
     }
 }
