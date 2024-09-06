@@ -1,20 +1,20 @@
 package linkedlist;
 
-class Node<T> {
-    public T data;
-    public Node<T> next = null;
-
-    Node(T data) {
-        this(data, null);
-    }
-
-    Node(T data, Node<T> next) {
-        this.data = data;
-        this.next = next;
-    }
-}
-
 public class SinglyADT<T> {
+    private class Node<NT> {
+        public NT data;
+        public Node<NT> next = null;
+
+        Node(NT data) {
+            this(data, null);
+        }
+
+        Node(NT data, Node<NT> next) {
+            this.data = data;
+            this.next = next;
+        }
+    }
+
     private Node<T> head;
 
     @Override
@@ -105,6 +105,58 @@ public class SinglyADT<T> {
         return this;
     }
 
+    public SinglyADT<T> insert(int idx, T value) {
+        if (idx == 0) {
+            prepend(value);
+            return this;
+        }
+
+        if (head == null) {
+            System.out.println("List is empty");
+            return this;
+        }
+
+        Node<T> curNode = head;
+
+        for (int i = 1; i < idx; i++) {
+            curNode = curNode.next;
+
+            if (curNode == null) {
+                System.out.println("Index out of bound");
+                return this;
+            }
+        }
+
+        Node<T> newNode = new Node<T>(value);
+        newNode.next = curNode.next;
+        curNode.next = newNode;
+        return this;
+    }
+
+    public SinglyADT<T> delete(int idx) {
+        if (head == null) {
+            System.out.println("Index out of bound");
+            return this;
+        }
+
+        if (idx == 0) {
+            head = head.next;
+            return this;
+        }
+
+        Node<T> currNode = head;
+        for (int i = 1; i < idx; i++) {
+            currNode = currNode.next;
+            if (currNode == null || currNode.next == null) {
+                System.out.println("Index out of bound");
+                return this;
+            }
+        }
+
+        currNode.next = currNode.next.next;
+        return this;
+    }
+
     public static void main(String[] args) {
         SinglyADT<Integer> list = new SinglyADT<>();
 
@@ -126,6 +178,16 @@ public class SinglyADT<T> {
         System.out.printf("%nGet : %n");
         System.out.println(list.get(0));
         System.out.println(list.get(5));
+
+        System.out.printf("%nInsert : %n");
+        list.insert(2, 222);
+        list.insert(5, 525);
+        list.insert(7, 325);
+        System.err.println(list);
+
+        System.out.printf("%nDelete Idx: %n");
+        list.delete(5);
+        System.err.println(list);
 
     }
 }
