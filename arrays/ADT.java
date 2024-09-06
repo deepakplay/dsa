@@ -51,6 +51,7 @@ public class ADT {
         // O(1)
         if (idx < 0 || idx >= length) {
             System.out.println("Array index out of bound");
+            return this;
         }
         array[idx] = num;
         return this;
