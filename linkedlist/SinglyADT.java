@@ -157,6 +157,48 @@ public class SinglyADT<T> {
         return this;
     }
 
+    public SinglyADT<T> reverse() {
+        if (head == null)
+            return this;
+
+        Node<T> prev = null;
+        Node<T> current = head;
+        Node<T> next = null;
+
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+
+        head = prev;
+        return this;
+    }
+
+    public SinglyADT<T> reverseRec() {
+        if (head == null)
+            return this;
+
+        reverseRecHelper(null, head);
+        return this;
+    }
+
+    private void reverseRecHelper(Node<T> prev, Node<T> current) {
+        if (current == null) {
+            head = prev;
+            return;
+        }
+
+        Node<T> nextNode = current.next;
+        current.next = prev;
+        reverseRecHelper(current, nextNode);
+    }
+
+    // rotate
+    // rotateRight
+    // merge
+
     public static void main(String[] args) {
         SinglyADT<Integer> list = new SinglyADT<>();
 
@@ -187,6 +229,12 @@ public class SinglyADT<T> {
 
         System.out.printf("%nDelete Idx: %n");
         list.delete(5);
+        System.err.println(list);
+
+        list.reverseRec();
+        System.err.println(list);
+
+        list.reverse();
         System.err.println(list);
 
     }
