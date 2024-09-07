@@ -106,6 +106,11 @@ public class SinglyADT<T> {
     }
 
     public SinglyADT<T> insert(int idx, T value) {
+        if (idx < 0 || idx > length()) {
+            System.err.println("Index out of bound");
+            return this;
+        }
+
         if (idx == 0) {
             prepend(value);
             return this;
@@ -134,7 +139,7 @@ public class SinglyADT<T> {
     }
 
     public SinglyADT<T> delete(int idx) {
-        if (head == null) {
+        if (idx < 0 || idx >= length() || head == null) {
             System.out.println("Index out of bound");
             return this;
         }
@@ -224,12 +229,14 @@ public class SinglyADT<T> {
         }
 
         Node<T> temp = current;
-        prev.next = null;
+        if (prev != null) {
+            prev.next = null;
+        }
         temp.next = head;
         head = temp;
 
         return this;
-    }    
+    }
 
     public static void main(String[] args) {
         SinglyADT<Integer> list = new SinglyADT<>();
