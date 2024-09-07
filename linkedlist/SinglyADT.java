@@ -195,9 +195,41 @@ public class SinglyADT<T> {
         reverseRecHelper(current, nextNode);
     }
 
-    // rotate
-    // rotateRight
-    // merge
+    public SinglyADT<T> rotate() {
+        if (head == null || head.next == null)
+            return this;
+
+        Node<T> temp = head;
+        head = head.next;
+        Node<T> current = head;
+
+        while (current.next != null) {
+            current = current.next;
+        }
+        current.next = temp;
+        temp.next = null;
+
+        return this;
+    }
+
+    public SinglyADT<T> rotateRight() {
+        if (head == null || head.next == null)
+            return this;
+
+        Node<T> current = head;
+        Node<T> prev = null;
+        while (current.next != null) {
+            prev = current;
+            current = current.next;
+        }
+
+        Node<T> temp = current;
+        prev.next = null;
+        temp.next = head;
+        head = temp;
+
+        return this;
+    }    
 
     public static void main(String[] args) {
         SinglyADT<Integer> list = new SinglyADT<>();
@@ -231,11 +263,25 @@ public class SinglyADT<T> {
         list.delete(5);
         System.err.println(list);
 
+        System.out.printf("%nReverse: %n");
         list.reverseRec();
         System.err.println(list);
 
         list.reverse();
         System.err.println(list);
 
+        System.out.printf("%nRotate Left: %n");
+        list.rotate();
+        System.err.println(list);
+
+        list.rotate();
+        System.err.println(list);
+
+        System.out.printf("%nRotate Right: %n");
+        list.rotateRight();
+        System.err.println(list);
+
+        list.rotateRight();
+        System.err.println(list);
     }
 }
