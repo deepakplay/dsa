@@ -16,6 +16,13 @@ public class InfixToPostfix {
         return -1;
     }
 
+    private static boolean isLeftAssociative(Character ch) {
+        if (ch.equals('^')) {
+            return false;
+        }
+        return true;
+    }
+
     public static String postfix(String exp) {
 
         MyStack<Character> stack = new MyStack<>();
@@ -34,7 +41,9 @@ public class InfixToPostfix {
                 }
                 stack.pop();
             } else {
-                while (!stack.isEmpty() && precedence(stack.peek()) >= precedence(ch)) {
+                while (!stack.isEmpty() && (
+                        (isLeftAssociative(ch) && precedence(stack.peek()) >= precedence(ch)) ||
+                        (!isLeftAssociative(ch) && precedence(stack.peek()) > precedence(ch)))) {
                     output.append(stack.pop());
                 }
                 stack.push(ch);
