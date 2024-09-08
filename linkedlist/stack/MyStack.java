@@ -1,4 +1,4 @@
-package linkedlist;
+package linkedlist.stack;
 
 public class MyStack<T> {
     private Node<T> top = null;
