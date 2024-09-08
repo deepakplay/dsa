@@ -4,6 +4,8 @@ public class EvalPostFix {
 
     public static Double eval(String exp) {
         String postFix = InfixToPostfix.postfix(exp);
+        System.out.println(postFix);
+
         MyStack<Double> expStack = new MyStack<>();
 
         for (int i = 0; i < postFix.length(); i++) {
@@ -34,13 +36,13 @@ public class EvalPostFix {
                 }
             }
         }
-        System.out.println(postFix);
+
         return expStack.pop();
     }
 
     public static void main(String[] args) {
-        String expression = "5+8^2^3+9*9";
+        String expression = "(5/6+8^2-(3+9)/7*9)^3";
         System.out.println(eval(expression));
-        System.out.println(5 + Math.pow(8, Math.pow(2, 3)) + 9 * 9);
+        System.out.println(Math.pow(5.0 / 6.0 + Math.pow(8, 2) - (3.0 + 9.0) / 7.0 * 9, 3));
     }
 }
