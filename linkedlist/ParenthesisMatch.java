@@ -3,7 +3,7 @@ package linkedlist;
 public class ParenthesisMatch {
 
     private static boolean checkMatching(char[] str) {
-        Stack<Character> stack = new Stack<>();
+        MyStack<Character> stack = new MyStack<>();
 
         for (char ch : str) {
             if (ch == '(' || ch == '[' || ch == '{') {

@@ -1,6 +1,6 @@
 package linkedlist;
 
-public class Stack<T> {
+public class MyStack<T> {
     private Node<T> top = null;
     private int size = 0;
 
@@ -40,7 +40,7 @@ public class Stack<T> {
         return str.toString();
     }
 
-    public Stack<T> push(T value) {
+    public MyStack<T> push(T value) {
         Node<T> newNode = new Node<T>(value);
         newNode.next = top;
         top = newNode;
@@ -99,14 +99,14 @@ public class Stack<T> {
         return size;
     }
 
-    public Stack<T> clear() {
+    public MyStack<T> clear() {
         top = null;
         size = 0;
         return this;
     }
 
     public static void main(String[] args) {
-        Stack<Integer> stack = new Stack<>();
+        MyStack<Integer> stack = new MyStack<>();
         stack.push(1).push(2).push(3);
 
         System.out.println(stack);
