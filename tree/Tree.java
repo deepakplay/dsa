@@ -97,11 +97,37 @@ public class Tree {
         System.out.print(node.data + " ");
     }
 
+    public void levelorder() {
+        System.out.print("Levelorder: ");
+        levelorder(root);
+    }
+
+    public void levelorder(Node root) {
+        if (root == null) {
+            return;
+        }
+
+        MyQueue<Node> queue = new MyQueue<>();
+        queue.enqueue(root);
+
+        while (!queue.isEmpty()) {
+            Node node = queue.dequeue();
+            System.out.print(node.data + " ");
+            if (node.left != null) {
+                queue.enqueue(node.left);
+            }
+            if (node.right != null) {
+                queue.enqueue(node.right);
+            }
+        }
+    }
+
     public static void main(String[] args) {
         Tree tr = new Tree();
         tr.create();
         tr.preorder();
         tr.inorder();
         tr.postorder();
+        tr.levelorder();
     }
 }
