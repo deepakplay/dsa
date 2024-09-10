@@ -100,6 +100,7 @@ public class Tree {
     public void levelorder() {
         System.out.print("Levelorder: ");
         levelorder(root);
+        System.out.println();
     }
 
     public void levelorder(Node root) {
@@ -122,6 +123,19 @@ public class Tree {
         }
     }
 
+    public int height() {
+        if (root == null)
+            return 0;
+
+        return height(root);
+    }
+
+    private int height(Node node) {
+        if (node == null)
+            return 0;
+        return 1 + Math.max(height(node.left), height(node.right));
+    }
+
     public static void main(String[] args) {
         Tree tr = new Tree();
         tr.create();
@@ -129,5 +143,7 @@ public class Tree {
         tr.inorder();
         tr.postorder();
         tr.levelorder();
+
+        System.out.println(tr.height());
     }
 }
