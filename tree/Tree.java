@@ -187,6 +187,17 @@ public class Tree {
         return 1 + Math.max(height(node.left), height(node.right));
     }
 
+    public int count() {
+        if (root == null) return 0;
+
+        return count(root);
+    }
+
+    private int count(Node node) {
+        if (node == null) return 0;
+        return 1 + count(node.left) + count(node.right);
+    }
+
     public static void main(String[] args) {
         Tree tr = new Tree();
         tr.create();
@@ -206,5 +217,6 @@ public class Tree {
         System.out.println();
 
         System.out.println("Height: " + tr.height());
+        System.out.println("Count: " + tr.count());
     }
 }
