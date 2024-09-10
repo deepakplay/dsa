@@ -8,8 +8,7 @@ public class Power {
     }
 
     private static int powerR(int num, int power) {
-        if (power <= 0)
-            return 1;
+        if (power <= 0) return 1;
 
         return powerR(num, power - 1) * num;
     }

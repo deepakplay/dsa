@@ -3,24 +3,16 @@ package linkedlist.stack;
 public class InfixToPostfix {
 
     private static int precedence(Character ch) {
-        switch (ch) {
-            case '^':
-                return 3;
-            case '*':
-            case '/':
-                return 2;
-            case '+':
-            case '-':
-                return 1;
-        }
-        return -1;
+        return switch (ch) {
+            case '^' -> 3;
+            case '*', '/' -> 2;
+            case '+', '-' -> 1;
+            default -> -1;
+        };
     }
 
     private static boolean isLeftAssociative(Character ch) {
-        if (ch.equals('^')) {
-            return false;
-        }
-        return true;
+        return !ch.equals('^');
     }
 
     public static String postfix(String exp) {
@@ -43,7 +35,7 @@ public class InfixToPostfix {
             } else {
                 while (!stack.isEmpty() && (
                         (isLeftAssociative(ch) && precedence(stack.peek()) >= precedence(ch)) ||
-                        (!isLeftAssociative(ch) && precedence(stack.peek()) > precedence(ch)))) {
+                                (!isLeftAssociative(ch) && precedence(stack.peek()) > precedence(ch)))) {
                     output.append(stack.pop());
                 }
                 stack.push(ch);

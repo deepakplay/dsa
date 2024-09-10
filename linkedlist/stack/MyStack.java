@@ -4,7 +4,7 @@ public class MyStack<T> {
     private Node<T> top = null;
     private int size = 0;
 
-    private class Node<NT> {
+    private static class Node<NT> {
         public NT data;
         public Node<NT> next;
 

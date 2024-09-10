@@ -2,8 +2,8 @@ package arrays;
 
 public class MergeArray {
     public static void main(String[] args) {
-        int[] array1 = new int[] { 5, 7, 9, 23, 28, 31, 34, 39 };
-        int[] array2 = new int[] { 2, 3, 4, 5, 9, 12, 15, 18, 23, 35 };
+        int[] array1 = new int[]{5, 7, 9, 23, 28, 31, 34, 39};
+        int[] array2 = new int[]{2, 3, 4, 5, 9, 12, 15, 18, 23, 35};
 
         int[] array3 = mergeArray(array1, array2);
 

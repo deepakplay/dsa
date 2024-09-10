@@ -9,7 +9,7 @@ public class EvalPostFix {
         MyStack<Double> expStack = new MyStack<>();
 
         for (int i = 0; i < postFix.length(); i++) {
-            Character ch = postFix.charAt(i);
+            char ch = postFix.charAt(i);
             if (Character.isDigit(ch)) {
                 expStack.push((double) (ch - '0'));
             } else {

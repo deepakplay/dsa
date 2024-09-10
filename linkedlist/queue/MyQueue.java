@@ -1,7 +1,7 @@
 package linkedlist.queue;
 
 public class MyQueue<T> {
-    private class Node<NT> {
+    private static class Node<NT> {
         NT data;
         Node<NT> next;
 
@@ -127,7 +127,7 @@ public class MyQueue<T> {
         System.out.println(queue.peek(2));
         System.out.println(queue);
 
-        while(!queue.isEmpty())
-            System.out.print(queue.dequeue()+" ");
+        while (!queue.isEmpty())
+            System.out.print(queue.dequeue() + " ");
     }
 }

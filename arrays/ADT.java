@@ -392,7 +392,7 @@ public class ADT {
                 .insert(2001, arr.length() / 2)
                 .insert(1001, 0)
                 .insert(3001, arr.length())
-                .merge(new int[] { 13, 52, 20, 21, 25, 27, 28 });
+                .merge(new int[]{13, 52, 20, 21, 25, 27, 28});
 
         System.out.println(arr);
 
@@ -417,8 +417,8 @@ public class ADT {
 
         System.out.printf("%nGet: %n");
         for (int i = 0; i < arr.length(); i++)
-            System.err.print(arr.get(i) + " ");
-        System.err.println();
+            System.out.print(arr.get(i) + " ");
+        System.out.println();
 
         System.out.printf("%nSet 2: %n");
         arr.set(2, 2525);
@@ -429,41 +429,41 @@ public class ADT {
 
         System.out.printf("%nSearch Last 52: %n");
         System.out.println(arr.searchLast(52));
-        System.err.println();
+        System.out.println();
 
         if (!arr.checkSorted()) {
             System.out.println("Array not sorted");
         }
 
         arr.bubbleSort();
-        System.err.println(arr);
+        System.out.println(arr);
 
         if (arr.checkSorted()) {
             System.out.println("Array is sorted");
         }
 
         arr.reverse();
-        System.err.println(arr);
-        System.err.printf("%nLeft Rotate: %n");
+        System.out.println(arr);
+        System.out.printf("%nLeft Rotate: %n");
         arr.rotate();
-        System.err.println(arr);
+        System.out.println(arr);
 
-        System.err.printf("%nRight Rotate: %n");
+        System.out.printf("%nRight Rotate: %n");
         arr.rotateRight();
-        System.err.println(arr);
+        System.out.println(arr);
         arr.rotateRight();
-        System.err.println(arr);
+        System.out.println(arr);
         arr.rotateRight();
-        System.err.println(arr);
+        System.out.println(arr);
 
-        System.err.printf("%nMerge Array: %n");
-        arr.merge(new ADT().merge(new int[] { 333, 5255, 255, 525 }));
-        System.err.println(arr);
+        System.out.printf("%nMerge Array: %n");
+        arr.merge(new ADT().merge(new int[]{333, 5255, 255, 525}));
+        System.out.println(arr);
 
-        System.err.printf("%nBinary Search: %n");
+        System.out.printf("%nBinary Search: %n");
         if (!arr.checkSorted()) {
             arr.bubbleSort();
-            System.err.println(arr);
+            System.out.println(arr);
 
             System.out.println(arr.binarySearch(13));
         }

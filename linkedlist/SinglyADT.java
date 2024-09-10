@@ -107,7 +107,7 @@ public class SinglyADT<T> {
 
     public SinglyADT<T> insert(int idx, T value) {
         if (idx < 0 || idx > length()) {
-            System.err.println("Index out of bound");
+            System.out.println("Index out of bound");
             return this;
         }
 
@@ -264,31 +264,31 @@ public class SinglyADT<T> {
         list.insert(2, 222);
         list.insert(5, 525);
         list.insert(7, 325);
-        System.err.println(list);
+        System.out.println(list);
 
         System.out.printf("%nDelete Idx: %n");
         list.delete(5);
-        System.err.println(list);
+        System.out.println(list);
 
         System.out.printf("%nReverse: %n");
         list.reverseRec();
-        System.err.println(list);
+        System.out.println(list);
 
         list.reverse();
-        System.err.println(list);
+        System.out.println(list);
 
         System.out.printf("%nRotate Left: %n");
         list.rotate();
-        System.err.println(list);
+        System.out.println(list);
 
         list.rotate();
-        System.err.println(list);
+        System.out.println(list);
 
         System.out.printf("%nRotate Right: %n");
         list.rotateRight();
-        System.err.println(list);
+        System.out.println(list);
 
         list.rotateRight();
-        System.err.println(list);
+        System.out.println(list);
     }
 }

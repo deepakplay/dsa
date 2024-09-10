@@ -4,13 +4,13 @@ public class BackTracking {
 
     public static void main(String[] args) {
         permutation("ABC".toCharArray(), 0);
-        System.err.println();
+        System.out.println();
         permutationSwap("ABC".toCharArray(), 0);
 
     }
 
-    private static int[] state = new int[10];
-    private static char[] statestr = new char[10];
+    private static final int[] state = new int[10];
+    private static final char[] statestr = new char[10];
 
     public static void permutation(char[] str, int level) {
         if (level == str.length) {

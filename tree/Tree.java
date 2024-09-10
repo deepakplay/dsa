@@ -1,12 +1,13 @@
 package tree;
 
 import java.util.Scanner;
+
 import linkedlist.queue.MyQueue;
 
 public class Tree {
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
-    private class Node {
+    private static class Node {
         Integer data;
         Node left;
         Node right;
@@ -21,8 +22,7 @@ public class Tree {
     private void create() {
         System.out.println("Enter the root");
         int rootValue = scanner.nextInt();
-        if (rootValue == -1)
-            return;
+        if (rootValue == -1) return;
         MyQueue<Node> queue = new MyQueue<>();
 
         root = new Node(rootValue);
@@ -31,14 +31,14 @@ public class Tree {
         while (!queue.isEmpty()) {
             Node node = queue.dequeue();
             System.out.printf("Enter left child of (%d) %n", node.data);
-            Integer leftData = scanner.nextInt();
+            int leftData = scanner.nextInt();
             if (leftData != -1) {
                 node.left = new Node(leftData);
                 queue.enqueue(node.left);
             }
 
             System.out.printf("Enter right child of (%d) %n", node.data);
-            Integer rightData = scanner.nextInt();
+            int rightData = scanner.nextInt();
             if (rightData != -1) {
                 node.right = new Node(rightData);
                 queue.enqueue(node.right);
@@ -46,7 +46,7 @@ public class Tree {
         }
     }
 
-    /***********/
+    /********** preorder ***********/
     public void preorder() {
         System.out.print("Preorder: ");
         preorder(root);
@@ -63,7 +63,7 @@ public class Tree {
         preorder(node.right);
     }
 
-    /***********/
+    /********** preorder ***********/
     public void inorder() {
         System.out.print("Inorder: ");
         inorder(root);
@@ -124,26 +124,32 @@ public class Tree {
     }
 
     public int height() {
-        if (root == null)
-            return 0;
+        if (root == null) return 0;
 
         return height(root);
     }
 
     private int height(Node node) {
-        if (node == null)
-            return 0;
+        if (node == null) return 0;
         return 1 + Math.max(height(node.left), height(node.right));
     }
 
     public static void main(String[] args) {
         Tree tr = new Tree();
         tr.create();
-        tr.preorder();
-        tr.inorder();
-        tr.postorder();
-        tr.levelorder();
 
-        System.out.println(tr.height());
+        tr.preorder();
+        System.out.println();
+
+        tr.inorder();
+        System.out.println();
+
+        tr.postorder();
+        System.out.println();
+
+        tr.levelorder();
+        System.out.println();
+
+        System.out.println("Height: " + tr.height());
     }
 }

@@ -3,13 +3,13 @@ package recursion;
 public class Fibonacci {
     public static void main(String[] args) {
         for (int i = 0; i <= 20; i++) {
-            System.err.print(fibR(i) + " ");
+            System.out.print(fibR(i) + " ");
         }
-        
-        System.err.println();
+
+        System.out.println();
 
         for (int i = 0; i <= 20; i++) {
-            System.err.print(fibI(i) + " ");
+            System.out.print(fibI(i) + " ");
         }
     }
 
@@ -37,9 +37,9 @@ public class Fibonacci {
         int b = 1;
 
         for (int i = 2; i <= n; i++) {
-            int temp = a+b;
-            a=b;
-            b= temp;
+            int temp = a + b;
+            a = b;
+            b = temp;
         }
 
         return b;
