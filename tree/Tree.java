@@ -1,8 +1,10 @@
 package tree;
 
 import java.util.Scanner;
+import java.util.Stack;
 
 import linkedlist.queue.MyQueue;
+import linkedlist.stack.MyStack;
 
 public class Tree {
     private final Scanner scanner = new Scanner(System.in);
@@ -63,7 +65,31 @@ public class Tree {
         preorder(node.right);
     }
 
-    /********** preorder ***********/
+    public void preorderI() {
+        if (root == null) {
+            return;
+        }
+
+        System.out.print("Preorder Iterative: ");
+        MyStack<Node> stack = new MyStack<>();
+        stack.push(root);
+
+        while (!stack.isEmpty()) {
+            Node node = stack.pop();
+            System.out.print(node.data + " ");
+
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+        }
+    }
+
+
+    /********** inorder ***********/
     public void inorder() {
         System.out.print("Inorder: ");
         inorder(root);
@@ -80,7 +106,32 @@ public class Tree {
         inorder(node.right);
     }
 
-    /***********/
+    public void inorderIterative() {
+        if (root == null) {
+            return;
+        }
+
+        System.out.print("Preorder Iterative: ");
+        MyStack<Node> stack = new MyStack<>();
+        Node current = root;
+
+        while (current != null || !stack.isEmpty()) {
+            while (current != null) {
+                stack.push(current);
+                current = current.left;
+            }
+
+            Node node = stack.pop();
+            System.out.print(node.data + " ");
+
+            current = node.right;
+        }
+
+        System.out.println();
+    }
+
+
+    /********** postorder ***********/
     public void postorder() {
         System.out.print("Postorder: ");
         postorder(root);
@@ -97,6 +148,7 @@ public class Tree {
         System.out.print(node.data + " ");
     }
 
+    /********** levelorder ***********/
     public void levelorder() {
         System.out.print("Levelorder: ");
         levelorder(root);
@@ -123,6 +175,7 @@ public class Tree {
         }
     }
 
+    /*********************/
     public int height() {
         if (root == null) return 0;
 
@@ -139,9 +192,11 @@ public class Tree {
         tr.create();
 
         tr.preorder();
+        tr.preorderI();
         System.out.println();
 
         tr.inorder();
+        tr.inorderIterative();
         System.out.println();
 
         tr.postorder();
