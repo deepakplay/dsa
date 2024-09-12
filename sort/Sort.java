@@ -11,9 +11,9 @@ public class Sort {
 
     private static void print(int ary[]) {
         for (int i : ary) {
-            System.err.print(i + " ");
+            System.out.print(i + " ");
         }
-        System.err.println();
+        System.out.println();
     }
 
     public static int[] bubbleSort(int[] ary) {
@@ -53,10 +53,30 @@ public class Sort {
         return ary;
     }
 
+    public static int[] selectionSort(int[] ary) {
+        ary = Arrays.copyOf(ary, ary.length);
+
+        for (int i = 0; i < ary.length; i++) {
+            int min = i;
+            for (int j = i + 1; j < ary.length; j++) {
+                if (ary[min] > ary[j]) {
+                    min = j;
+                }
+            }
+
+            if (i != min) {
+                swap(ary, i, min);
+            }
+        }
+
+        return ary;
+    }
+
     public static void main(String[] args) {
         int ary[] = { 5, 84, 91, 5, 1, 47, 5, 548, 6, 24, 24, 89, 22, 15, 34 };
 
         print(bubbleSort(ary));
         print(insertionSort(ary));
+        print(selectionSort(ary));
     }
 }
