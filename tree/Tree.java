@@ -1,8 +1,6 @@
 package tree;
 
 import java.util.Scanner;
-import java.util.Stack;
-
 import linkedlist.queue.MyQueue;
 import linkedlist.stack.MyStack;
 
@@ -24,7 +22,8 @@ public class Tree {
     private void create() {
         System.out.println("Enter the root");
         int rootValue = scanner.nextInt();
-        if (rootValue == -1) return;
+        if (rootValue == -1)
+            return;
         MyQueue<Node> queue = new MyQueue<>();
 
         root = new Node(rootValue);
@@ -88,7 +87,6 @@ public class Tree {
         }
     }
 
-
     /********** inorder ***********/
     public void inorder() {
         System.out.print("Inorder: ");
@@ -129,7 +127,6 @@ public class Tree {
 
         System.out.println();
     }
-
 
     /********** postorder ***********/
     public void postorder() {
@@ -177,24 +174,28 @@ public class Tree {
 
     /*********************/
     public int height() {
-        if (root == null) return 0;
+        if (root == null)
+            return 0;
 
         return height(root);
     }
 
     private int height(Node node) {
-        if (node == null) return 0;
+        if (node == null)
+            return 0;
         return 1 + Math.max(height(node.left), height(node.right));
     }
 
     public int count() {
-        if (root == null) return 0;
+        if (root == null)
+            return 0;
 
         return count(root);
     }
 
     private int count(Node node) {
-        if (node == null) return 0;
+        if (node == null)
+            return 0;
         return 1 + count(node.left) + count(node.right);
     }
 
