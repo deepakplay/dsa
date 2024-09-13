@@ -117,7 +117,7 @@ public class Sort {
 
         int[] newAry = new int[ary1.length + ary2.length];
         int i = 0, j = 0, idx = 0;
-        
+
         while (i < ary1.length && j < ary2.length) {
             if (ary1[i] <= ary2[j]) {
                 newAry[idx++] = ary1[i++];
@@ -141,6 +141,49 @@ public class Sort {
         return mergeSort(ary, 0, ary.length - 1);
     }
 
+    // in-place merge sort
+    private static void mergeSortIP(int[] ary, int start, int end) {
+        if (start >= end) {
+            return;
+        }
+
+        int mid = start + ((end - start) / 2);
+        mergeSortIP(ary, start, mid);
+        mergeSortIP(ary, mid + 1, end);
+
+        int start1 = start;
+        int end1 = mid;
+
+        int start2 = mid + 1;
+        int end2 = end;
+
+        while (start1 <= end1 && start2 <= end2) {
+            if (ary[start1] <= ary[start2]) {
+                start1++;
+            } else {
+                int val = ary[start2];
+                int i = start2;
+
+                while (i > start1) {
+                    ary[i] = ary[i - 1];
+                    i--;
+                }
+
+                ary[i] = val;
+                start1++;
+                end1++;
+                start2++;
+            }
+        }
+
+        return;
+    }
+
+    public static int[] mergeSortIP(int[] ary) {
+        mergeSortIP(ary, 0, ary.length - 1);
+        return ary;
+    }
+
     public static void main(String[] args) {
         int ary[] = { 15, 5, 34, 65, 1, 47, 5, 548, 6, 84, 91, 22, 24, 24, 89 };
 
@@ -149,5 +192,6 @@ public class Sort {
         print(selectionSort(copy(ary)));
         print(quickSort(copy(ary)));
         print(mergeSort(copy(ary)));
+        print(mergeSortIP(copy(ary)));
     }
 }
