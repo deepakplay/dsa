@@ -1,4 +1,4 @@
-package recursion;
+package backtrack;
 
 public class BackTracking {
 
