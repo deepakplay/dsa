@@ -1,4 +1,4 @@
-package backtrack;
+package recursion.backtrack;
 
 public class BackTracking {
 
