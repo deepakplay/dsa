@@ -13,10 +13,7 @@ public class Sort {
     }
 
     private static void print(int ary[]) {
-        for (int i : ary) {
-            System.out.print(i + " ");
-        }
-        System.out.println();
+        System.out.println(Arrays.toString(ary));
     }
 
     public static int[] copy(int[] ary) {
