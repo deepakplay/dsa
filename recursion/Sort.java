@@ -25,10 +25,32 @@ public class Sort {
         }
     }
 
+    public static int[] selectionSort(int[] ary, int idx, int max, int len) {
+        if (len == 0) {
+            return ary;
+        }
+
+        if (idx <= len) {
+            if (ary[idx] > ary[max]) {
+                max = idx;
+            }
+
+            return selectionSort(ary, idx + 1, max, len);
+        } else {
+            if (max != len) {
+                swap(ary, max, len);
+            }
+            return selectionSort(ary, 0, 0, len - 1);
+        }
+    }
+
     public static void main(String[] args) {
         int[] ary = { 74, 4, 25, 59, 11, 5, 8, 14, 17 };
 
         int[] newAry = bubbleSort(Arrays.copyOf(ary, ary.length), 0, ary.length - 1);
         System.out.println(Arrays.toString(newAry));
+
+        int[] newAry1 = selectionSort(Arrays.copyOf(ary, ary.length), 0, 0, ary.length - 1);
+        System.out.println(Arrays.toString(newAry1));
     }
 }
