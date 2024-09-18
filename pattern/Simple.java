@@ -236,6 +236,7 @@ public class Simple {
         }
 
         System.out.println();
+        /////////////////////////////////////
 
         for (int i = 1; i <= num * 2 - 1; i++) {
             int k = i <= num ? i : num * 2 - i;
@@ -251,6 +252,77 @@ public class Simple {
                     System.out.print(" ");
                 }
             }
+            System.out.println();
+        }
+
+        System.out.println();
+        /////////////////////////////////////
+
+        for (int i = 1; i <= num; i++) {
+            for (int j = 1; j <= num - 1; j++) {
+                if (i == 1 || j == 1 || i == num || j == num - 1) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+
+        System.out.println();
+        /////////////////////////////////////
+
+        for (int i = 1; i <= num; i++) {
+            for (int j = 1; j <= num - i; j++) {
+                System.out.print(" ");
+            }
+            for (int j = 1; j <= num - 1; j++) {
+                if (i == 1 || j == 1 || i == num || j == num - 1) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+
+        System.out.println();
+        /////////////////////////////////////
+
+        for (int i = 1; i <= num * 2; i++) {
+            int k = (i <= num) ? i : (num * 2 - i) + 1;
+            int start = num - k + 1;
+            int end = num + k;
+
+            for (int j = 1; j <= num * 2; j++) {
+
+                if (j > start && j < end) {
+                    System.out.print(" ");
+                } else {
+                    System.out.print("*");
+                }
+            }
+            System.out.println();
+        }
+
+        System.out.println();
+        /////////////////////////////////////
+
+        for (int i = 1; i <= num * 2 - 1; i++) {
+            int k = i <= num ? i : num * 2 - i;
+
+            int start = k;
+            int end = num * 2 - k + 1;
+
+            for (int j = 1; j <= num * 2; j++) {
+
+                if (j > start && j < end) {
+                    System.out.print(" ");
+                } else {
+                    System.out.print("*");
+                }
+            }
+
             System.out.println();
         }
     }
