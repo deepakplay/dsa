@@ -360,5 +360,48 @@ public class Simple {
             }
             System.out.println();
         }
+
+        System.out.println();
+        /////////////////////////////////////
+
+        for (int i = 1; i <= num * 2 - 1; i++) {
+            for (int j = 1; j <= num * 2 - 1; j++) {
+                int min = i;
+                if (min > j) {
+                    min = j;
+                }
+
+                if ((num * 2 - i) < min) {
+                    min = num * 2 - i;
+                }
+
+                if ((num * 2 - j) < min) {
+                    min = num * 2 - j;
+                }
+                System.out.print(min + " ");
+            }
+            System.out.println();
+        }
+
+        System.out.println();
+        /////////////////////////////////////
+        for (int i = 1; i <= num * 2 - 1; i++) {
+            for (int j = 1; j <= num * 2 - 1; j++) {
+                int min = i;
+                if (min > j) {
+                    min = j;
+                }
+
+                if ((num * 2 - i) < min) {
+                    min = num * 2 - i;
+                }
+
+                if ((num * 2 - j) < min) {
+                    min = num * 2 - j;
+                }
+                System.out.print(num - min + 1 + " ");
+            }
+            System.out.println();
+        }
     }
 }
