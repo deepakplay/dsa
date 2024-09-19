@@ -10,16 +10,20 @@ class Possible {
         System.out.println(substrItr("aabc"));
     }
 
-    public static ArrayList<String> substr(String str, String src) {
+    public static HashSet<String> substr(String str, String src) {
         if (src.isEmpty()) {
-            ArrayList<String> list = new ArrayList<>();
-            list.add(str);
+            HashSet<String> list = new HashSet<>();
+            if (str.isEmpty()) {
+                list.add("[]");
+            } else {
+                list.add(str);
+            }
             return list;
         }
 
         char ch = src.charAt(0);
-        ArrayList<String> list1 = substr(ch + str, src.substring(1));
-        ArrayList<String> list2 = substr(str, src.substring(1));
+        HashSet<String> list1 = substr(ch + str, src.substring(1));
+        HashSet<String> list2 = substr(str, src.substring(1));
         list1.addAll(list2);
         return list1;
     }
@@ -36,7 +40,7 @@ class Possible {
 
             if (i > 0 && str.charAt(i) == str.charAt(i - 1)) {
                 start = end + 1;
-            }else{
+            } else {
                 start = 0;
             }
             end = list.size() - 1;
