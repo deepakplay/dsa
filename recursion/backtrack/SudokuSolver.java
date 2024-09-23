@@ -19,29 +19,31 @@ public class SudokuSolver {
         solve(board, 0, 0);
     }
 
-    public static void solve(int[][] board, int row, int col) {
+    public static boolean solve(int[][] board, int row, int col) {
         if (row == 9) {
             display(board);
-            return;
+            return true;
         }
 
         if (col == 9) {
-            solve(board, row + 1, 0);
-            return;
+            return solve(board, row + 1, 0);
         }
 
         if (board[row][col] != 0) {
-            solve(board, row, col + 1);
-            return;
+            return solve(board, row, col + 1);
         }
 
         for (int num = 1; num <= 9; num++) {
             if (isValid(board, row, col, num)) {
                 board[row][col] = num;
-                solve(board, row, col + 1);
+                if (solve(board, row, col + 1)) {
+                    return true;
+                }
                 board[row][col] = 0;
             }
         }
+
+        return false;
     }
 
     public static void display(int[][] board) {
